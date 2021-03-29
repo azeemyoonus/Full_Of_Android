@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Scroll_view-App</string>
+    <string name="head">Android</string>
+    <string name="Note">Note: This is to just show scroll view</string>
+    <string name="content_text">\nAndroid is an operating system\n\nbased on Linux kernal,\n\n and designed primarily\n\nfor touchscreen mobile \n\ndevices such as smartphones and tablet computers.\n\nInitially developed by Android,\nInc.,\n\n Which Google backed \n\nfinancially and later bought in 2005\n\n\n~This is just to show scroll view</string>
 </resources>
