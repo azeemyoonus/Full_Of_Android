@@ -4,15 +4,15 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
-import android.net.Network;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-/* import com.example.android.datafrominternet.utilities.NetworkUtlis; */
+import com.example.android.datafrominternet.utilities.NetworkUtlis;
 
+import java.io.IOException;
 import java.net.URL;
 
 public class MainActivity extends AppCompatActivity {
@@ -38,16 +38,21 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int menuItemThatWasSelected = item.getItemId();
         if(menuItemThatWasSelected==R.id.action_search){
-            Context context =MainActivity.this;
-            String message="Search clicked";
-            Toast.makeText(context,message,Toast.LENGTH_LONG).show();
+         makegithubquery();
+         return true;
         }
-        return super.onOptionsItemSelected(item);
+        return true;
     }
 
     void makegithubquery(){
         String githubquery = searchbox.getText().toString();
-      /*  URL githubsearchurl = NetworkUtlis.buildUrl(githubquery);
-        viewbox.setText(githubsearchurl.toString()); */
+      URL githubsearchurl = NetworkUtlis.buildUrl(githubquery);
+        viewbox.setText(githubsearchurl.toString());
+        String githubsearchresult = null;
+        try{
+            githubsearchresult=NetworkUtlis.getResponseFromHttpUrl(githubsearchurl);
+        }catch (IOException e){
+            e.printStackTrace();
+        }
     }
 }
